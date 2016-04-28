@@ -16,7 +16,9 @@
     "systemjs": "^0.19.26"
   },
   "jspm": {
-    "dependencies": {},
+    "dependencies": {
+      "zepto": "npm:zepto@^1.0.1"
+    },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"
     }
