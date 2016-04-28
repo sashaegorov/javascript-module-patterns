@@ -14,5 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "systemjs": "^0.19.26"
+  },
+  "jspm": {
+    "dependencies": {},
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
   }
 }
