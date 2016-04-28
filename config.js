@@ -6,6 +6,14 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  bundles: {
+    "dest/main.js": [
+      "lib/js/main.js",
+      "lib/js/hello_js_browser.js",
+      "lib/js/hello_function_named.js",
+      "lib/js/hello_function_anon.js"
+    ]
+  },
 
   map: {
     "typescript": "npm:typescript@1.8.10",

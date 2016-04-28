@@ -4,11 +4,15 @@
   "description": "Module patterns using simple examples",
   "main": "hello_js.js",
   "devDependencies": {
-    "jspm": "^0.16.33"
+    "jspm": "^0.16.33",
+    "lite-server": "^2.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "js": "node hello_js.js"
+    "js": "node hello_js.js",
+    "bundle-sfx": "jspm bundle-sfx lib/js/main dest/main.sfx.js",
+    "bundle": "jspm bundle lib/js/main dest/main.js --inject",
+    "build": "npm run bundle-sfx; npm run bundle"
   },
   "author": "Alexander Egorov",
   "license": "MIT",
