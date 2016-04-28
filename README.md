@@ -2,9 +2,11 @@
 
 ## JavaScript Examples
 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) is used from JavaScript.
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) is used for JavaScript.
 
 #### Node.js
+
+Run `npm install && npm run js` or `npm install; and npm run js`
 
 - `Node.js` module patterns as seen [here](https://darrenderidder.github.io/talks/ModulePatterns/#/)
   - ~~**Pattern 1**: Define a global~~
