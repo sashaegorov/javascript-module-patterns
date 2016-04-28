@@ -27,6 +27,20 @@ $__System.registerDynamic("3", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
+$__System.registerDynamic("4", [], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var Hello = function() {};
+  Hello.prototype.hello = function() {
+    const message = 'Hello from JavaScript! I\'m anonymous object.';
+    return message;
+  };
+  module.exports = new Hello();
+  return module.exports;
+});
+
 (function() {
 var define = $__System.amdDefine;
 (function(global, factory) {
@@ -6030,9 +6044,9 @@ var define = $__System.amdDefine;
   });
   jQuery.fn.andSelf = jQuery.fn.addBack;
   if (typeof define === "function" && define.amd) {
-    define("4", [], function() {
+    define("5", [], function() {
       return jQuery;
-    }), define("jquery", ["4"], function(m) {
+    }), define("jquery", ["5"], function(m) {
       return m;
     });
   }
@@ -6056,20 +6070,21 @@ var define = $__System.amdDefine;
 })();
 (function() {
 var define = $__System.amdDefine;
-define("5", ["4"], function(main) {
+define("6", ["5"], function(main) {
   return main;
 });
 
 })();
-$__System.register("6", ["2", "3", "5"], function(exports_1, context_1) {
+$__System.register("7", ["2", "3", "4", "6"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var hello_function_anon_js_1, hello_function_named_js_1, jquery_1;
+    var hello_function_anon_js_1, hello_function_named_js_1, hello_object_anon_js_1, jquery_1;
     function hello_js_browser() {
         jquery_1.default(document).ready(function () {
             jquery_1.default('body').addClass('hello');
             jquery_1.default('<li>' + hello_function_anon_js_1.default() + '</li>').appendTo('#msg');
             jquery_1.default('<li>' + hello_function_named_js_1.default.something() + '</li>').appendTo('#msg');
+            jquery_1.default('<li>' + hello_object_anon_js_1.default.hello() + '</li>').appendTo('#msg');
         });
     }
     exports_1("hello_js_browser", hello_js_browser);
@@ -6081,6 +6096,9 @@ $__System.register("6", ["2", "3", "5"], function(exports_1, context_1) {
             function (hello_function_named_js_1_1) {
                 hello_function_named_js_1 = hello_function_named_js_1_1;
             },
+            function (hello_object_anon_js_1_1) {
+                hello_object_anon_js_1 = hello_object_anon_js_1_1;
+            },
             function (jquery_1_1) {
                 jquery_1 = jquery_1_1;
             }],
@@ -6089,7 +6107,7 @@ $__System.register("6", ["2", "3", "5"], function(exports_1, context_1) {
     }
 });
 
-$__System.register("1", ["6"], function(exports_1, context_1) {
+$__System.register("1", ["7"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var hello_js_browser_js_1;

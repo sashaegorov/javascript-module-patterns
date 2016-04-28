@@ -12,6 +12,7 @@ System.config({
       "lib/js/hello_js_browser.js",
       "npm:jquery@2.2.3.js",
       "npm:jquery@2.2.3/dist/jquery.js",
+      "lib/js/hello_object_anon.js",
       "lib/js/hello_function_named.js",
       "lib/js/hello_function_anon.js"
     ]
