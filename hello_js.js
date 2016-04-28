@@ -2,7 +2,7 @@
 
 // Pattern 2
 var hello_function_anon = require('./lib/js/hello_function_anon.js')
-console.log();(hello_function_anon())
+console.log(hello_function_anon())
 
 // Pattern 3
 var hello_function = require('./lib/js/hello_function_named.js')
