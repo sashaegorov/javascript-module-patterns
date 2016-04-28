@@ -47,7 +47,35 @@ System.registerDynamic("lib/js/hello_object_named.js", [], true, function($__req
     const message = 'Hello from JavaScript! I\'m named object.';
     return message;
   };
-  module.exports = new HelloNamed();
+  exports.helloObject = new HelloNamed();
+  return module.exports;
+});
+
+System.registerDynamic("lib/js/hello_proto_anon.js", [], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var Hello = function() {};
+  Hello.prototype.hello = function() {
+    const message = 'Hello from JavaScript! I\'m anonymous prototype.';
+    return message;
+  };
+  module.exports = Hello;
+  return module.exports;
+});
+
+System.registerDynamic("lib/js/hello_proto_named.js", [], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var HelloNamed = function() {};
+  HelloNamed.prototype.hello = function() {
+    const message = 'Hello from JavaScript! I\'m named prototype.';
+    return message;
+  };
+  exports.HelloProto = HelloNamed;
   return module.exports;
 });
 
@@ -6085,17 +6113,24 @@ define("npm:jquery@2.2.3.js", ["npm:jquery@2.2.3/dist/jquery.js"], function(main
 });
 
 })();
-System.register("lib/js/hello_js_browser.js", ["lib/js/hello_function_anon.js", "lib/js/hello_function_named.js", "lib/js/hello_object_anon.js", "lib/js/hello_object_named.js", "npm:jquery@2.2.3.js"], function(exports_1, context_1) {
+System.register("lib/js/hello_js_browser.js", ["lib/js/hello_function_anon.js", "lib/js/hello_function_named.js", "lib/js/hello_object_anon.js", "lib/js/hello_object_named.js", "lib/js/hello_proto_anon.js", "lib/js/hello_proto_named.js", "npm:jquery@2.2.3.js"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var hello_function_anon_js_1, hello_function_named_js_1, hello_object_anon_js_1, hello_object_named_js_1, jquery_1;
+    var hello_function_anon_js_1, hello_function_named_js_1, hello_object_anon_js_1, hello_object_named_js_1, hello_proto_anon_js_1, hello_proto_named_js_1, jquery_1;
     function hello_js_browser() {
         jquery_1.default(document).ready(function () {
             jquery_1.default('body').addClass('hello');
+            // Function
             jquery_1.default('<li>' + hello_function_anon_js_1.default() + '</li>').appendTo('#msg');
             jquery_1.default('<li>' + hello_function_named_js_1.default.something() + '</li>').appendTo('#msg');
+            // Object
             jquery_1.default('<li>' + hello_object_anon_js_1.default.hello() + '</li>').appendTo('#msg');
-            jquery_1.default('<li>' + hello_object_named_js_1.default.hello() + '</li>').appendTo('#msg');
+            jquery_1.default('<li>' + hello_object_named_js_1.default.helloObject.hello() + '</li>').appendTo('#msg');
+            // Prototype
+            var fromProtoAnon = new hello_proto_anon_js_1.default();
+            jquery_1.default('<li>' + fromProtoAnon.hello() + '</li>').appendTo('#msg');
+            var fromProtoNamed = new hello_proto_named_js_1.default.HelloProto();
+            jquery_1.default('<li>' + fromProtoNamed.hello() + '</li>').appendTo('#msg');
         });
     }
     exports_1("hello_js_browser", hello_js_browser);
@@ -6112,6 +6147,12 @@ System.register("lib/js/hello_js_browser.js", ["lib/js/hello_function_anon.js", 
             },
             function (hello_object_named_js_1_1) {
                 hello_object_named_js_1 = hello_object_named_js_1_1;
+            },
+            function (hello_proto_anon_js_1_1) {
+                hello_proto_anon_js_1 = hello_proto_anon_js_1_1;
+            },
+            function (hello_proto_named_js_1_1) {
+                hello_proto_named_js_1 = hello_proto_named_js_1_1;
             },
             function (jquery_1_1) {
                 jquery_1 = jquery_1_1;

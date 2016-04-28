@@ -51,7 +51,35 @@ $__System.registerDynamic("5", [], true, function($__require, exports, module) {
     const message = 'Hello from JavaScript! I\'m named object.';
     return message;
   };
-  module.exports = new HelloNamed();
+  exports.helloObject = new HelloNamed();
+  return module.exports;
+});
+
+$__System.registerDynamic("6", [], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var Hello = function() {};
+  Hello.prototype.hello = function() {
+    const message = 'Hello from JavaScript! I\'m anonymous prototype.';
+    return message;
+  };
+  module.exports = Hello;
+  return module.exports;
+});
+
+$__System.registerDynamic("7", [], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var HelloNamed = function() {};
+  HelloNamed.prototype.hello = function() {
+    const message = 'Hello from JavaScript! I\'m named prototype.';
+    return message;
+  };
+  exports.HelloProto = HelloNamed;
   return module.exports;
 });
 
@@ -6058,9 +6086,9 @@ var define = $__System.amdDefine;
   });
   jQuery.fn.andSelf = jQuery.fn.addBack;
   if (typeof define === "function" && define.amd) {
-    define("6", [], function() {
+    define("8", [], function() {
       return jQuery;
-    }), define("jquery", ["6"], function(m) {
+    }), define("jquery", ["8"], function(m) {
       return m;
     });
   }
@@ -6084,22 +6112,29 @@ var define = $__System.amdDefine;
 })();
 (function() {
 var define = $__System.amdDefine;
-define("7", ["6"], function(main) {
+define("9", ["8"], function(main) {
   return main;
 });
 
 })();
-$__System.register("8", ["2", "3", "4", "5", "7"], function(exports_1, context_1) {
+$__System.register("a", ["2", "3", "4", "5", "6", "7", "9"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var hello_function_anon_js_1, hello_function_named_js_1, hello_object_anon_js_1, hello_object_named_js_1, jquery_1;
+    var hello_function_anon_js_1, hello_function_named_js_1, hello_object_anon_js_1, hello_object_named_js_1, hello_proto_anon_js_1, hello_proto_named_js_1, jquery_1;
     function hello_js_browser() {
         jquery_1.default(document).ready(function () {
             jquery_1.default('body').addClass('hello');
+            // Function
             jquery_1.default('<li>' + hello_function_anon_js_1.default() + '</li>').appendTo('#msg');
             jquery_1.default('<li>' + hello_function_named_js_1.default.something() + '</li>').appendTo('#msg');
+            // Object
             jquery_1.default('<li>' + hello_object_anon_js_1.default.hello() + '</li>').appendTo('#msg');
-            jquery_1.default('<li>' + hello_object_named_js_1.default.hello() + '</li>').appendTo('#msg');
+            jquery_1.default('<li>' + hello_object_named_js_1.default.helloObject.hello() + '</li>').appendTo('#msg');
+            // Prototype
+            var fromProtoAnon = new hello_proto_anon_js_1.default();
+            jquery_1.default('<li>' + fromProtoAnon.hello() + '</li>').appendTo('#msg');
+            var fromProtoNamed = new hello_proto_named_js_1.default.HelloProto();
+            jquery_1.default('<li>' + fromProtoNamed.hello() + '</li>').appendTo('#msg');
         });
     }
     exports_1("hello_js_browser", hello_js_browser);
@@ -6117,6 +6152,12 @@ $__System.register("8", ["2", "3", "4", "5", "7"], function(exports_1, context_1
             function (hello_object_named_js_1_1) {
                 hello_object_named_js_1 = hello_object_named_js_1_1;
             },
+            function (hello_proto_anon_js_1_1) {
+                hello_proto_anon_js_1 = hello_proto_anon_js_1_1;
+            },
+            function (hello_proto_named_js_1_1) {
+                hello_proto_named_js_1 = hello_proto_named_js_1_1;
+            },
             function (jquery_1_1) {
                 jquery_1 = jquery_1_1;
             }],
@@ -6125,7 +6166,7 @@ $__System.register("8", ["2", "3", "4", "5", "7"], function(exports_1, context_1
     }
 });
 
-$__System.register("1", ["8"], function(exports_1, context_1) {
+$__System.register("1", ["a"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var hello_js_browser_js_1;
