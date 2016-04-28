@@ -18,4 +18,5 @@ Module patterns as seen [here](https://darrenderidder.github.io/talks/ModulePatt
   - ~~**Pattern 1**: Define a global~~
   - **Pattern 2**: Export an anonymous function `lib/js/hello_function_anon.js`
   - **Pattern 3**: Export an named function `lib/js/hello_function_named.js`
-  - **Pattern 3**: Export an anonymous object `lib/js/hello_object_anon.js`
+  - **Pattern 4**: Export an anonymous object `lib/js/hello_object_anon.js`
+  - **Pattern 5**: Export an named object `lib/js/hello_object_named.js`

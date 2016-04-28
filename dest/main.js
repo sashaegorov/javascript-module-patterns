@@ -37,6 +37,20 @@ System.registerDynamic("lib/js/hello_object_anon.js", [], true, function($__requ
   return module.exports;
 });
 
+System.registerDynamic("lib/js/hello_object_named.js", [], true, function($__require, exports, module) {
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var HelloNamed = function() {};
+  HelloNamed.prototype.hello = function() {
+    const message = 'Hello from JavaScript! I\'m named object.';
+    return message;
+  };
+  module.exports = new HelloNamed();
+  return module.exports;
+});
+
 (function() {
 var define = System.amdDefine;
 (function(global, factory) {
@@ -6071,16 +6085,17 @@ define("npm:jquery@2.2.3.js", ["npm:jquery@2.2.3/dist/jquery.js"], function(main
 });
 
 })();
-System.register("lib/js/hello_js_browser.js", ["lib/js/hello_function_anon.js", "lib/js/hello_function_named.js", "lib/js/hello_object_anon.js", "npm:jquery@2.2.3.js"], function(exports_1, context_1) {
+System.register("lib/js/hello_js_browser.js", ["lib/js/hello_function_anon.js", "lib/js/hello_function_named.js", "lib/js/hello_object_anon.js", "lib/js/hello_object_named.js", "npm:jquery@2.2.3.js"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var hello_function_anon_js_1, hello_function_named_js_1, hello_object_anon_js_1, jquery_1;
+    var hello_function_anon_js_1, hello_function_named_js_1, hello_object_anon_js_1, hello_object_named_js_1, jquery_1;
     function hello_js_browser() {
         jquery_1.default(document).ready(function () {
             jquery_1.default('body').addClass('hello');
             jquery_1.default('<li>' + hello_function_anon_js_1.default() + '</li>').appendTo('#msg');
             jquery_1.default('<li>' + hello_function_named_js_1.default.something() + '</li>').appendTo('#msg');
             jquery_1.default('<li>' + hello_object_anon_js_1.default.hello() + '</li>').appendTo('#msg');
+            jquery_1.default('<li>' + hello_object_named_js_1.default.hello() + '</li>').appendTo('#msg');
         });
     }
     exports_1("hello_js_browser", hello_js_browser);
@@ -6094,6 +6109,9 @@ System.register("lib/js/hello_js_browser.js", ["lib/js/hello_function_anon.js", 
             },
             function (hello_object_anon_js_1_1) {
                 hello_object_anon_js_1 = hello_object_anon_js_1_1;
+            },
+            function (hello_object_named_js_1_1) {
+                hello_object_named_js_1 = hello_object_named_js_1_1;
             },
             function (jquery_1_1) {
                 jquery_1 = jquery_1_1;
