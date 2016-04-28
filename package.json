@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Module patterns using simple examples",
   "main": "hello_js.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "jspm": "^0.16.33"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "js": "node hello_js.js"
